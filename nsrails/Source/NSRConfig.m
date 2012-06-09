@@ -232,6 +232,10 @@ static NSString *currentEnvironment = nil;
 
 - (NSDate *) dateFromString:(NSString *)string
 {
+    if([string hasSuffix:@"+00:00"]) {
+        string = [string stringByReplacingOccurrencesOfString:@"+00:00" withString:@"Z"];   
+    }
+    
 	NSDate *date = [dateFormatter dateFromString:string];
 	
 	if (!date && string)
