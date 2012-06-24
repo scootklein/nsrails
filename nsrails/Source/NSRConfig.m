@@ -311,8 +311,12 @@ static NSString *currentEnvironment = nil;
 	{
 		NSMutableDictionary *inf = [NSMutableDictionary dictionary];
 
+        if (statusCode == 404)
+        {
+            [inf setObject:@"Resource Not Found" forKey:NSLocalizedDescriptionKey];
+        }
 		//422 means there was a validation error
-		if (statusCode == 422)
+		else if (statusCode == 422)
 		{
 			if ([response isKindOfClass:[NSDictionary class]])
 				[inf setObject:response forKey:NSRValidationErrorsKey];
@@ -322,7 +326,7 @@ static NSString *currentEnvironment = nil;
 		{
 			if (self.succinctErrorMessages)
 			{
-				//if error message is in HTML,
+                //if error message is in HTML,
 				if ([response rangeOfString:@"</html>"].location != NSNotFound)
 				{
 					NSArray *pres = [response componentsSeparatedByString:@"<pre>"];

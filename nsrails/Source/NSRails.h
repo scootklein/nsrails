@@ -49,5 +49,6 @@
 #import "NSRConfig.h"
 #import "NSRRemoteObject.h"
 #import "NSMutableArray+NSRails.h"
+#import "NSString+Inflection.h"
 #import "NSRMacros.h"
 

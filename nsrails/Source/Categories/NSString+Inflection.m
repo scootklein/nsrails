@@ -129,10 +129,6 @@
 			}
 		}
 	}
-
-    // replace items that end in Id with ID
-    if([[underscored substringWithRange:NSMakeRange(underscored.length - 2, 2)] isEqualToString:@"Id"])
-        [underscored replaceCharactersInRange:NSMakeRange(underscored.length - 2, 2) withString:@"ID"];
 	
 	return underscored;
 }

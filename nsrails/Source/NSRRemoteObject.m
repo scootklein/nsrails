@@ -1182,7 +1182,7 @@ _NSR_REMOTEID_SYNTH remoteID;
 }
 
 + (NSArray *) remoteAllViaObject:(NSRRemoteObject *)obj error:(NSError **)error {
-    id json = [obj remoteRequest:@"GET" method:[self routeForControllerMethod:nil] body:nil error:error];
+    id json = [obj remoteRequest:@"GET" method:[[self class] masterPluralName] body:nil error:error];
     
     if (!json)
 		return nil;
@@ -1211,7 +1211,7 @@ _NSR_REMOTEID_SYNTH remoteID;
 }
 
 + (void) remoteAllViaObject:(NSRRemoteObject *)obj async:(NSRFetchAllCompletionBlock)completionBlock {
-    [self remoteRequest:@"GET" method:[self routeForControllerMethod:nil] body:nil async:
+    [obj remoteRequest:@"GET" method:[[self class] masterPluralName] body:nil async:
     ^(id result, NSError *error) 
     {
         if (!result)
